@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color guessing game</title>
+	<script type="text/javascript">
+	var color;
+	var colorList = [ "blue", "cyan", "gold", "gray", "green",
+					  "magenta", "orange", "red", "white", "yellow" ];
+	var finished = false;
+	var noOfGuesses = 0;
+
+	var randomColor = colorList[ parseInt( Math.random() * 11 ) ];
+
+	function doGame(){
+		alert( "Hint debug: " + randomColor);
+		while( !finished ){
+			guess = prompt( "I am thinking of one of these colors:\n\n" 
+							+ colorList.join() + 
+							"\n\nWhat color am I thinking of");
+			noOfGuesses += 1;
+			if ( guess == randomColor )
+				finished = true
+			if( finished == true ) {
+				alert( 	"Congratulations!! You guessed the color\n\n" +
+						"It took you " + noOfGuesses + " guesses to finish the game\n\n" + 
+						"You can see the color in the background");
+				myBody=document.getElementsByTagName("body")[0];
+				myBody.style.background=randomColor;
+			}
+		}
+	}
+	</script>
+</head>
+<body onload="doGame()">
+</body>
+</html>
